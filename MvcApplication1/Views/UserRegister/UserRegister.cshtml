@@ -1,14 +1,16 @@
 ﻿@model UserRegistrationApplication.Models.UserRegisterModel
 
 @{
-    ViewBag.Title = "UserRegister";
+    ViewBag.Title = "User Registration";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
  <link href="@Url.Content("~/Content/BaseStyleSheet.css")" rel="stylesheet" type="text/css" />
-<h2>User Registration Form</h2>@using(Html.BeginForm())
+@using(Html.BeginForm())
 {
-<div>
+    
+<div id="maincontainer">
+    <h2>User Registration Form</h2>
     <div class="formRowContainer">
         <div class="labelContainer">
             @Html.LabelFor(model => model.Name)
@@ -37,6 +39,13 @@
     </div>
     <div class="clearStyle"></div>
     <div class="buttonContainer">
-        <button>Register</button></div></div>
+        <button>Register</button></div>
+
+    <div> <button>Menu 1</button> </div>
+    <div> <button>Menu 2</button> </div>
+    <div> <button>Menu 3</button> </div>
+    <div> <button>Menu 4</button> </div>
+
+</div>
 }
 

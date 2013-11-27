@@ -22,3 +22,10 @@
 {
     clear: both;
 }
+
+#maincontainer {
+
+  width: 840px; /*Width of main container*/
+ margin: 0 auto; /*Center container on page*/
+}
+
