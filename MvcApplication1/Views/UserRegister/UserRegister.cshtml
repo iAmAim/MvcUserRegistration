@@ -6,22 +6,28 @@
 }
 
  <link href="@Url.Content("~/Content/BaseStyleSheet.css")" rel="stylesheet" type="text/css" />
+ <div id="date"></div>
 <h2>User Registration Form</h2>@using(Html.BeginForm())
 {
 <div>
+
+    
     <div class="formRowContainer">
         <div class="labelContainer">
             @Html.LabelFor(model => model.Name)
         </div>
         <div class="valueContainer">
-            @Html.TextBoxFor(model=>model.Name,Model.Name)
+            @Html.TextBoxFor(model => model.Name, new { Model.Name, onchange="validateField(this)" })
+            @Html.ValidationMessage("Name")
+
         </div>
+        <p id="namemessage"> error message here</p>
     </div>
     <div class="clearStyle"></div>
     <div class="formRowContainer">
         <div class="labelContainer">
             @Html.LabelFor(model => model.Password)
-       </div>
+        </div>
         <div class="valueContainer">
             @Html.PasswordFor(model => model.Password, Model.Password)
         </div>
@@ -37,6 +43,58 @@
     </div>
     <div class="clearStyle"></div>
     <div class="buttonContainer">
-        <button>Register</button></div></div>
+        <button onclick="validateField();">Register</button></div>
+        
+ </div>
+    
+    <input id="name1" name="Name" type="text" onchange="validateField(this)"  />
+    <p id="namemsg"> validation here</p>
+    
+    
+     <script type="text/javascript">
+         var today = new Date();
+         today = today.toDateString();
+        // document.getElementById("date").innerHTML = today;
+
+
+         var d = new Date();
+         var weekday = new Array(7);
+         weekday[0] = "Sunday";
+         weekday[1] = "Monday";
+         weekday[2] = "Tuesday";
+         weekday[3] = "Wednesday";
+         weekday[4] = "Thursday";
+         weekday[5] = "Friday";
+         weekday[6] = "Saturday";
+
+         var n = weekday[d.getDay()];
+
+         var todayDate = n + ', ' + today.substring(3);
+         document.getElementById("date").innerHTML = todayDate;
+
+
+         function validateField(name) {
+             //var name = document.getElementById("name1").value;
+
+             var namemessage = document.getElementById("namemsg");
+             var fieldName = name.getAttribute("name");
+            if (name.value == null || name.value.trim()=="")
+            {
+
+                namemessage.innerHTML = "Please enter a valid " + fieldName + "to continue."
+             
+            }
+            else{
+               namemessage.innerHTML = "";
+
+            }
+
+         }
+
+
+        
+     </script>
+
+
 }
 
