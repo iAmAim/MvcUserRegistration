@@ -50,6 +50,21 @@
     <input id="name1" name="Name" type="text" onchange="validateField(this)"  />
     <p id="namemsg"> validation here</p>
     
+    <p>Modal pop up here</p>
+    <div id="displayinmodal">
+    <input type="file" id="file" name="file" />
+
+     <input type="submit" id="submitdata" value="Upload" />
+    </div>
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#displayinmodal").dialog({ //displayinmodal is the id of the div you want to display in modal popup
+                autoOpen: true
+            });
+        });
+    </script>
+    
     
      <script type="text/javascript">
          var today = new Date();
