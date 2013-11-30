@@ -8,9 +8,11 @@
         </div>
         <div class="valueContainer">
             @Html.TextBoxFor(model => model.Name, new { name="Name", onblur="validateField(this)"  })
-            @Html.ValidationMessage("Name")
-            <p id="val-Name"> name error message here</p>
-        </div>                  
+            @Html.ValidationMessage("Name")  
+            <p id="val-Name"> name error message here</p>        
+        </div>   
+        
+       
     </div>
     <div class="clearStyle"></div>
     <div class="formRowContainer">

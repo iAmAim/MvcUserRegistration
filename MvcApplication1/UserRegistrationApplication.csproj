@@ -150,10 +150,7 @@
     <Content Include="Views\UserRegister\UserRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\UserRegister\TestView.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\UserRegister\TestView1.cshtml" />
+    <Content Include="Views\UserRegister\RegistrationModal.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
