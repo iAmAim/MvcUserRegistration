@@ -7,65 +7,24 @@
 
  <link href="@Url.Content("~/Content/BaseStyleSheet.css")" rel="stylesheet" type="text/css" />
  <div id="date"></div>
-<h2>User Registration Form</h2>@using(Html.BeginForm())
-{
-<div>
+<h2>User Registration Form</h2>
+    
+    
+   <!-- Modal  -->
+    <a class="button" href="#openModal">Register Now!</a>
+    
+    <div id="openModal" class="modalbg"> 
+	  <div class="dialog"> 
+		<a href="#close" title="Close" class="close">X</a>
 
-    
-    <div class="formRowContainer">
-        <div class="labelContainer">
-            @Html.LabelFor(model => model.Name)
-        </div>
-        <div class="valueContainer">
-            @Html.TextBoxFor(model => model.Name, new { Model.Name, onchange="validateField(this)" })
-            @Html.ValidationMessage("Name")
-
-        </div>
-        <p id="namemessage"> error message here</p>
-    </div>
-    <div class="clearStyle"></div>
-    <div class="formRowContainer">
-        <div class="labelContainer">
-            @Html.LabelFor(model => model.Password)
-        </div>
-        <div class="valueContainer">
-            @Html.PasswordFor(model => model.Password, Model.Password)
-        </div>
-    </div>
-   <div class="clearStyle"></div>
-    <div class="formRowContainer">
-        <div class="labelContainer">
-            @Html.LabelFor(model => model.Email)
-        </div>
-        <div class="valueContainer">
-            @Html.TextBoxFor(model => model.Email, Model.Email)
-        </div>
-    </div>
-    <div class="clearStyle"></div>
-    <div class="buttonContainer">
-        <button onclick="validateField();">Register</button></div>
-        
- </div>
-    
-    <input id="name1" name="Name" type="text" onchange="validateField(this)"  />
-    <p id="namemsg"> validation here</p>
-    
-    <p>Modal pop up here</p>
-    <div id="displayinmodal">
-    <input type="file" id="file" name="file" />
-
-     <input type="submit" id="submitdata" value="Upload" />
-    </div>
-    
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#displayinmodal").dialog({ //displayinmodal is the id of the div you want to display in modal popup
-                autoOpen: true
-            });
-        });
-    </script>
-    
-    
+          <!-- modal contents*/ -->
+            @Html.Partial("TestView")
+	
+		</div>
+     </div>
+	  
+    <!--Scripts HERE -->
+      
      <script type="text/javascript">
          var today = new Date();
          today = today.toDateString();
@@ -88,28 +47,30 @@
          document.getElementById("date").innerHTML = todayDate;
 
 
-         function validateField(name) {
+         function validateField(field) {
              //var name = document.getElementById("name1").value;
-
-             var namemessage = document.getElementById("namemsg");
-             var fieldName = name.getAttribute("name");
-            if (name.value == null || name.value.trim()=="")
+             var fieldName = field.getAttribute("name");
+             var validationFieldName = "val-" + fieldName;
+             var valField = document.getElementById(validationFieldName);
+             
+             var isSuccessful = true;
+             if (field.value == null || field.value.trim() == "")
             {
 
-                namemessage.innerHTML = "Please enter a valid " + fieldName + "to continue."
+                valField.innerHTML = "Please enter a valid " + fieldName + " to continue."
+                isSuccessful = false;
              
             }
             else{
-               namemessage.innerHTML = "";
+                valField.innerHTML = "";
+                isSuccessful = true;
 
             }
 
-         }
+            return isSuccessful;
+            
 
-
-        
+         }    
      </script>
 
-
-}
 
